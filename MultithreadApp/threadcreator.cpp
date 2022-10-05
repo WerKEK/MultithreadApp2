@@ -31,6 +31,6 @@ void ThreadCreator::changeStateStarted() //Слоты для сигнала
 
 void ThreadCreator::changeStateFinished()
 {
-    widget->parent()->findChild<QLabel*>()->setText("Finished");
+    widget->parent()->findChild<QLabel*>()->setText("Finished"); //Находим лейбл у объекта и изменяем его текст
 }
 
