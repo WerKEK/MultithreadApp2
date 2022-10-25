@@ -10,13 +10,12 @@ class Task : public QObject
 
 public:
     Task();
-    void taskCompletion();
-    QString getState();
+    void complete();
+
 
 signals:
     void started();
     void finished();
-
 
 };
 

@@ -10,16 +10,18 @@ class ThreadCreator : public QThread
 
 public:
     explicit ThreadCreator(QObject *parent = nullptr);
+    ~ThreadCreator();
 
-    void run();
-    void createTh(QObject*);
 
+    void createTh();
+
+
+private:
     QObject* widget;
     Task* task;
 
-public slots:
-    void changeStateStarted();
-    void changeStateFinished();
+    void run();
+
 
 };
 

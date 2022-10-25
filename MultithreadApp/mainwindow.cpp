@@ -1,32 +1,45 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+
 #include <threadcreator.h>
 #include <task.h>
-#include <QVector>
-#include <QListWidget>
-#include <QWidget>
+
 #include <QObject>
+#include <QProgressBar>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    ui->lineEdit->setValidator(new QIntValidator(0, 1000, this));
 }
 
 MainWindow::~MainWindow()
 {
+    delete th;
     delete ui;
 }
 
 void MainWindow::on_pushButton_clicked()
 {
-    for (auto checkbox : MainWindow::findChildren<QCheckBox *>()) { //Ищем все чекбоксы
-        if(checkbox->isChecked()){      //Проверка, чекед они или нет
+    if(!(getTasksCount() > 0))
+        return;
+
+    for (int i = 0; i < getTasksCount(); i++) {
             th = new ThreadCreator();
-            th->createTh(checkbox); //Передаём родительский виджет
-        }
     }
+}
+
+void MainWindow::createTable()
+{
+
+}
+
+int MainWindow::getTasksCount()
+{
+    return ui->lineEdit->text().toInt();
 }
 
 

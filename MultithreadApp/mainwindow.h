@@ -17,14 +17,14 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    ThreadCreator *th;
-
-
 
 private slots:
     void on_pushButton_clicked();
+    void createTable();
+    int getTasksCount();
 
 private:
-    Ui::MainWindow *ui;
+    Ui::MainWindow *ui;   
+    ThreadCreator *th;
 };
 #endif // MAINWINDOW_H
